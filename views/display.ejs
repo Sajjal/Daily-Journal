@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mr.Sajjal's Journal</title>
+    <link rel="shortcut icon" href="/images/icon.png" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mr. Sajjal's Journal</h1>
+        <div>
+            <%- include('_navbar')%>
+        </div>
+        <div class="txtbox">
+            <h2>
+                <center>
+                    <u>  <%= post.title %>  </u>
+                </center>
+            </h2>
+            <div class="createdAt">
+                Published on:
+                <%=post.createdAt.toLocaleDateString()%>
+            </div>
+            <div class="main_post">
+                <%- post.main_post%>
+            </div>
+            <div>
+                <a href="/edit/<%= post.id %>" class='btn btn_edit'>Edit</a>
+            </div>
+        </div>
+        <div class="footer">
+            Mr. Sajjal's Journal | github: @Sajjal
+        </div>
+    </div>
+
+</body>
+
+</html>

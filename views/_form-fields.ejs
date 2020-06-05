@@ -1,0 +1,25 @@
+<div>
+    <label for="title">Title</label>
+    <center><input required value="<%= post.title%>" type="text" name="title" id="title">
+    </center>
+</div>
+<br>
+<div>
+    <label for="snippet">Snippet</label>
+    <textarea required name="snippet" id="snippet" class="textarea" maxlength="150"><%= post.snippet %> </textarea>
+
+</div><br>
+<div>
+    <textarea name="main_post" id="main_post" class="post_textarea"><%= post.main_post%></textarea>
+
+</div>
+<button type='submit' class="btn btn_edit_group">Save</button>
+<a href="/" class="btn btn_edit_group">Cancel</a>
+<script src="/js/nicEdit.js" type="text/javascript"></script>
+<script>
+    bkLib.onDomLoaded(function() {
+        area2 = new nicEditor({
+            fullPanel: true
+        }).panelInstance('main_post');
+    });
+</script>
