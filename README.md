@@ -18,10 +18,12 @@ I got inspired by that particular video and decided to work on a similar project
 And here it is.
 
 ---
+
 ## Update (June 22, 2020):
+
 - Added **JWT** authentication system.
 - One way password hashing using **bcryptjs**.
-- Form validation using **joi**.
+- Client Side Form Validation.
 - Token verification using **Cookie-Parser**.
 - Token **BlackList** on Logout.
 
