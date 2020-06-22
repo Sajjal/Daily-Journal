@@ -1,0 +1,44 @@
+<script type="text/javascript">
+  let first = Math.ceil(Math.random() * 10);
+  let second = Math.ceil(Math.random() * 10);
+  let total = first + second;
+
+  function displayCaptchaLogin() {
+    document.write("What is " + first + " + " + second + "? ");
+    document.write(
+      "<input id='captchaInputLogin' type='text' maxlength='2' size='10'/>"
+    );
+  }
+
+  function validateLoginForm() {
+    let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let password = document.getElementById("loginPass").value;
+    let email = document.getElementById("loginEmail").value;
+
+    if (!email.match(emailFormat)) {
+      document.getElementById("loginEmailError").innerHTML =
+        "<span style='color: red;'>Invalid Email!</span>";
+      return false;
+    } else if (password.length < 6 || password.length == undefined) {
+      document.getElementById("loginPassError").innerHTML =
+        "<span style='color: red;'>Password Must be at least Six Character Long!</span>";
+      return false;
+    } else {
+      return validateCaptchaLogin();
+    }
+
+    function validateCaptchaLogin() {
+      let input = document.getElementById("captchaInputLogin").value;
+      if (input == total) return true;
+      else {
+        document.getElementById("Loginerror").innerHTML =
+          "<span style='color: red;'>Check Your Answer!</span>";
+        return false;
+      }
+    }
+  }
+</script>
+<div id="Loginerror"></div>
+<script type="text/javascript">
+  displayCaptchaLogin();
+</script>

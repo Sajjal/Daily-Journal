@@ -1,0 +1,59 @@
+<script type="text/javascript">
+  let firstValue = Math.ceil(Math.random() * 10);
+  let secondValue = Math.ceil(Math.random() * 10);
+  let sum = firstValue + secondValue;
+
+  function displayCaptcha() {
+    document.write("What is " + firstValue + " + " + secondValue + "? ");
+    document.write(
+      "<input id='captchaInput' type='text' maxlength='2' size='10'/>"
+    );
+  }
+  function validateRegisterForm() {
+    let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let name = document.getElementById("name").value;
+    let regEmail = document.getElementById("regEmail").value;
+    let regPassword = document.getElementById("regPass").value;
+    let regConfirmPass = document.getElementById("confirmPass").value;
+
+    if (regConfirmPass != regPassword) console.log(" no match");
+    else {
+      console.log("match");
+    }
+
+    if (name.length < 6) {
+      document.getElementById("nameError").innerHTML =
+        "<span style='color: red;'>Name Must be at least Six Character Long!</span>";
+      return false;
+    } else if (!regEmail.match(emailFormat)) {
+      document.getElementById("regEmailError").innerHTML =
+        "<span style='color: red;'>Invalid Email!</span>";
+      return false;
+    } else if (regPassword.length < 6 || regPassword.length == undefined) {
+      document.getElementById("regPassError").innerHTML =
+        "<span style='color: red;'>Password Must be at least Six Character Long!</span>";
+      return false;
+    } else if (regPassword != regConfirmPass) {
+      document.getElementById("confirmPassError").innerHTML =
+        "<span style='color: red;'>Password does not Match!</span>";
+      return false;
+    } else {
+      return validateRegCaptcha();
+    }
+
+    function validateRegCaptcha() {
+      let userInput = document.getElementById("captchaInput").value;
+      if (userInput == sum) return true;
+      else {
+        document.getElementById("error").innerHTML =
+          "<span style='color: red;'>Check Your Answer!</span>";
+        return false;
+      }
+    }
+  }
+</script>
+
+<div id="error"></div>
+<script type="text/javascript">
+  displayCaptcha();
+</script>

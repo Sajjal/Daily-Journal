@@ -147,19 +147,6 @@ body {
   padding: 10px 0;
 }
 
-.error {
-  color: red;
-  border: 1px solid gray;
-  border-radius: 8px;
-  display: block;
-  padding: 10px 10px;
-  text-align: left;
-  text-transform: uppercase;
-  font-size: 1em;
-  padding-left: 10px 10px;
-  margin-bottom: 10px;
-}
-
 .posts {
   border: 1px solid #24ad97;
   padding: 10px 10px;

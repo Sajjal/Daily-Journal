@@ -4,19 +4,13 @@ const InvalidTokens = require("../model/Tokens");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const { registrationValidation, loginValidation, } = require("../modules/validation");
-
 router.post("/register", async (req, res) => {
-  //Validate user entered data
-  const { error } = registrationValidation(req.body);
-  if (error) return res.status(400).render("login", { errors: error.details });
-
   //Check if user already Exists
   const userExists = await Users.findOne({ email: req.body.email });
   if (userExists)
-    return res.status(400).render("login", {
-      errors: [{ message: "Email already Exists! Try Log in!" }],
-    });
+    return res
+      .status(400)
+      .render("login", { message: "Email already Exists! Try Log in!" });
 
   //Hash the password
   const salt = await bcrypt.genSalt(10);
@@ -38,22 +32,24 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  //Validate user entered data
-  const { error } = loginValidation(req.body);
-  if (error) return res.status(400).render("login", { errors: error.details });
-
   //Check if user is in DataBase
   const user = await Users.findOne({ email: req.body.email });
   if (!user)
-    return res.status(400).render("login", { errors: [{ message: "Invalid Email" }] });
+    return res
+      .status(400)
+      .render("login", { message: "Error: Invalid Email!" });
 
   //Check for valid password
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword)
-    return res.status(400).render("login", { errors: [{ message: "Invalid Password" }] });
+    return res
+      .status(400)
+      .render("login", { message: "Error: Invalid Password!" });
 
   //If everything is valid Create and assign a token. Token Expires in 12 hours
-  const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, { expiresIn: "43200s", });
+  const accessToken = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET, {
+    expiresIn: "43200s",
+  });
 
   //Save accessToken to Client's Browser Cookie and Redirect to Dashboard
   res.cookie("accessToken", accessToken).redirect("/dashboard");

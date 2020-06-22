@@ -9,7 +9,6 @@
   "author": "Sajjal Neupane",
   "license": "ISC",
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
     "dompurify": "^2.0.11",

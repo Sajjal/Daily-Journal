@@ -3,23 +3,44 @@
 
   <form action="/user/register/" method="POST">
     <div>
-      <input type="text" name="name" placeholder=" Name..." />
+      <div id="nameError"></div>
+      <input type="text" name="name" id="name" placeholder=" Name..." />
     </div>
     <br />
     <div>
-      <input type="text" name="email" placeholder=" Email..." />
+      <div id="regEmailError"></div>
+      <input type="text" name="email" id="regEmail" placeholder=" Email..." />
     </div>
     <br />
     <div>
-      <input type="password" name="password" placeholder=" Password..." />
+      <div id="regPassError"></div>
+      <input
+        type="password"
+        name="password"
+        id="regPass"
+        placeholder=" Password..."
+      />
     </div>
     <br />
     <div>
-      <input type="password" name="verifyPassword" placeholder=" Password..." />
+      <div id="confirmPassError"></div>
+      <input
+        type="password"
+        name="verifyPassword"
+        id="confirmPass"
+        placeholder=" Confirm Password..."
+      />
     </div>
     <br />
+    <div><%- include('_registerValidation')%></div>
+    <br />
     <div>
-      <input type="submit" class="btn" value="Register" />
+      <input
+        type="submit"
+        class="btn"
+        value="Register"
+        onclick="return validateRegisterForm();"
+      />
     </div>
   </form>
 </div>
@@ -29,15 +50,34 @@
 
   <form action="/user/login/" method="POST">
     <div>
-      <input type="text" name="email" placeholder=" Email..." />
+      <div id="loginEmailError"></div>
+      <input
+        type="email"
+        name="email"
+        id="loginEmail"
+        placeholder=" Email..."
+      />
     </div>
     <br />
     <div>
-      <input type="password" name="password" placeholder=" Password..." />
+      <div id="loginPassError"></div>
+      <input
+        type="password"
+        name="password"
+        id="loginPass"
+        placeholder=" Password..."
+      />
     </div>
     <br />
+    <div><%- include('_loginValidation')%></div>
+    <br />
     <div>
-      <input type="submit" class="btn" value="Login" />
+      <input
+        type="submit"
+        class="btn"
+        value="Login"
+        onclick="return validateLoginForm();"
+      />
     </div>
   </form>
 </div>
