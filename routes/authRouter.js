@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.render("login");
+    res.render("login", { message: "Registration Complete! Please Login" });
   } catch (err) {
     res.status(400).send(err);
   }
@@ -66,7 +66,7 @@ router.post("/logout", async (req, res) => {
 
   try {
     await invalidTokens.save();
-    res.render("login");
+    res.render("login", { message: "You are now Logged Out!" });
   } catch (err) {
     res.status(400).send(err);
   }

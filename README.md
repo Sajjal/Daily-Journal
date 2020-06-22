@@ -18,6 +18,7 @@ I got inspired by that particular video and decided to work on a similar project
 And here it is.
 
 ---
+<<<<<<< HEAD
 ## Update (June 22, 2020):
 - Added **JWT** authentication system.
 - One way password hashing using **bcryptjs**.
@@ -25,6 +26,8 @@ And here it is.
 - Token **BlackList** on Logout.
 
 ---
+=======
+>>>>>>> b70b1c878053f015614aed435af832ed62d5e76a
 
 ## Prerequisites:
 
@@ -53,12 +56,15 @@ And here it is.
 
 ## Demo:
 
+<<<<<<< HEAD
 **Login Page:**
 
 <img src="https://github.com/Sajjal/Daily-Journal/blob/master/public/images/Screen_shots/login.png">
 
 ---
 
+=======
+>>>>>>> b70b1c878053f015614aed435af832ed62d5e76a
 **Home Page:**
 
 <img src="https://github.com/Sajjal/Daily-Journal/blob/master/public/images/Screen_shots/home.png">
