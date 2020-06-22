@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Mr.Sajjal's Journal</title>
+  <link rel="shortcut icon" href="/images/icon.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Mr. Sajjal's Journal</h1>
+    <div>
+      <%- include('_navbar')%>
+    </div>
+    <div class="display" id="display">
+      <% posts.forEach(post => {%>
+      <div class="posts">
+        <h3><%= post.title %></h3>
+        <div>
+          <%- post.snippet %>...
+        </div>
+        <div>
+          <a href="/display/<%= post.slug %>" class="btn btn_read_more">Read More...</a>
+        </div>
+      </div>
+      <% })%>
+    </div>
+    <div>
+      <%- include('_pagination')%>
+    </div>
+    <div class="footer">
+      Mr. Sajjal's Journal | github: @Sajjal
+    </div>
+  </div>
+</body>
+
+</html>

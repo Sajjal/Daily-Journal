@@ -1,0 +1,43 @@
+<div class="login">
+  <h2>New User? Sign Up!</h2>
+
+  <form action="/user/register/" method="POST">
+    <div>
+      <input type="text" name="name" placeholder=" Name..." />
+    </div>
+    <br />
+    <div>
+      <input type="text" name="email" placeholder=" Email..." />
+    </div>
+    <br />
+    <div>
+      <input type="password" name="password" placeholder=" Password..." />
+    </div>
+    <br />
+    <div>
+      <input type="password" name="verifyPassword" placeholder=" Password..." />
+    </div>
+    <br />
+    <div>
+      <input type="submit" class="btn" value="Register" />
+    </div>
+  </form>
+</div>
+
+<div class="login">
+  <h2>Already Registered? Login!</h2>
+
+  <form action="/user/login/" method="POST">
+    <div>
+      <input type="text" name="email" placeholder=" Email..." />
+    </div>
+    <br />
+    <div>
+      <input type="password" name="password" placeholder=" Password..." />
+    </div>
+    <br />
+    <div>
+      <input type="submit" class="btn" value="Login" />
+    </div>
+  </form>
+</div>

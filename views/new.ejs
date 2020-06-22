@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mr.Sajjal's Journal</title>
+    <link rel="shortcut icon" href="/images/icon.png" />
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mr. Sajjal's Journal</h1>
+        <div>
+            <%- include('_navbar')%>
+        </div>
+        <div class="notification">
+            New Post
+        </div>
+        <div class="txtbox">
+            <form action="/" method='POST'>
+                <%- include('_form-fields')%>
+            </form>
+        </div>
+        <div class="footer">
+            Mr. Sajjal's Journal | github: @Sajjal
+        </div>
+    </div>
+
+</body>
+
+</html>

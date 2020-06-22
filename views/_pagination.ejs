@@ -1,0 +1,39 @@
+<div class="pagination">
+    <% if (currentPage == 1 && pages > 1)  { %>
+    <p>Page<%= currentPage %> of<%= pages %></p>
+
+    <a href="/?page=<%= parseInt(currentPage) + 1 %>" class='btn btn_pagination'>
+        <%=  parseInt(currentPage) + 1%>
+    </a>
+
+    <a href="/?page=<%= parseInt(pages)%>" class='btn btn_pagination'>>></a>
+
+    <% }else if (currentPage < pages) {%>
+    <p>Page<%= currentPage %> of<%= pages %></p>
+
+    <a href="/?page=1" class='btn btn_pagination'>
+        << </a>
+
+            <a href="/?page=<%= parseInt(currentPage) - 1 %>" class='btn btn_pagination'>
+                <%=  parseInt(currentPage) - 1%>
+            </a>
+
+            <a href="/?page=<%= parseInt(currentPage) + 1 %>" class='btn btn_pagination'>
+                <%=  parseInt(currentPage) + 1%>
+            </a>
+
+            <a href="/?page=<%= parseInt(pages)%>" class='btn btn_pagination'>
+                >>
+            </a>
+
+            <% } else if (currentPage == pages && pages > 1) { %>
+            <p>Page<%= currentPage %> of<%= pages %></p>
+
+            <a href="/?page=1" class='btn btn_pagination'>
+                <<< /a>
+
+                    <a href="/?page=<%= parseInt(currentPage) - 1 %>" class='btn btn_pagination'>
+                        <%=  parseInt(currentPage) - 1%>
+                    </a>
+                    <% } %>
+</div>
