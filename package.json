@@ -4,7 +4,7 @@
   "description": "Web Based Daily Personal Journal Application",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Sajjal Neupane",
   "license": "ISC",
@@ -21,7 +21,5 @@
     "mongoose": "^5.9.16",
     "slugify": "^1.4.0"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+  "devDependencies": {}
 }
