@@ -20,7 +20,7 @@ body {
 .container h1 {
   margin-top: 0;
   text-decoration: underline;
-  background-color: #24ad97;
+  background-color: #2d8ec2;
   border-radius: 8px;
   padding: 30px 15px;
   color: #f0f0f0;
@@ -45,7 +45,7 @@ body {
   border-radius: 8px;
   display: block;
   text-align: center;
-  color: #24ad97;
+  color: #2d8ec2;
   text-transform: uppercase;
   font-size: 1.6em;
   font-weight: bold;
@@ -148,7 +148,7 @@ body {
 }
 
 .posts {
-  border: 1px solid #24ad97;
+  border: 1px solid #2d8ec2;
   padding: 10px 10px;
   border-radius: 8px;
   text-align: left;
@@ -177,6 +177,17 @@ img {
   margin-top: 6px;
   width: 99.8%;
   height: 250px;
+}
+
+.homeTextArea {
+  background-color: #dfe1e8;
+  border: 1px solid #cac6c6;
+  font-size: 16px;
+  align-content: left;
+  padding-left: 10px;
+  margin-top: 6px;
+  width: 98.2%;
+  height: 450px;
 }
 
 .createdAt {
@@ -256,7 +267,7 @@ img {
   margin-right: 5px;
   color: #1a1814;
   padding: 0.185rem;
-  border: 1px solid #24ad97;
+  border: 1px solid #2d8ec2;
   border-radius: 5px;
   min-width: 20px;
 }
@@ -266,7 +277,7 @@ img {
   margin-top: 20px;
   padding: 12px 18px;
   border-radius: 8px;
-  background-color: #24ad97;
+  background-color: #2d8ec2;
   color: #f0f0f0;
   text-align: center;
   font-weight: bold;

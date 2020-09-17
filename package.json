@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Sajjal Neupane",
-  "license": "ISC",
+  "author": "Sajjal Neupane {https://mrsajjal.com}",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",

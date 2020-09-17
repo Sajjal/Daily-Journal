@@ -10,7 +10,11 @@ const slugify = require("slugify");
 
 const dompurify = createDomPurify(new JSDOM().window);
 
-router.get("/", verify, async function (req, res) {
+router.get("/", (req, res) => {
+  res.render("home");
+});
+
+router.get("/dashboard", verify, async function (req, res) {
   const resPerPage = 6; // results per page
   const page = req.query.page || 1; // Page
   const postCount = await Post.countDocuments();
@@ -58,7 +62,7 @@ router.post("/search", verify, async (req, res) => {
 
   const postCount = posts.length;
 
-  if (posts.length < 1) res.redirect("/");
+  if (posts.length < 1) res.redirect("/dashboard");
   else
     res.render("index", {
       posts: posts,
@@ -67,45 +71,53 @@ router.post("/search", verify, async (req, res) => {
     });
 });
 
-router.post("/", verify, async (req, res, next) => {
-  req.post = new Post();
-  next();
-},
+router.post(
+  "/",
+  verify,
+  async (req, res, next) => {
+    req.post = new Post();
+    next();
+  },
   savePostandRedirect("new")
 );
 
-router.put("/:id", verify, async (req, res, next) => {
-  req.post = await Post.findById(req.params.id);
-  next();
-},
+router.put(
+  "/:id",
+  verify,
+  async (req, res, next) => {
+    req.post = await Post.findById(req.params.id);
+    next();
+  },
   savePostandRedirect("edit")
 );
 
 router.delete("/:id", verify, async (req, res) => {
   await Post.findByIdAndDelete(req.params.id);
-  res.redirect("/");
+  res.redirect("/dashboard");
 });
 
 function savePostandRedirect(path) {
-  return (verify, async (req, res) => {
-    let sanitizedPost = dompurify.sanitize(req.body.main_post);
-    let titleSlug = slugify(req.body.title, { lower: true, strict: true });
-    user = req.user._id;
+  return (
+    verify,
+    async (req, res) => {
+      let sanitizedPost = dompurify.sanitize(req.body.main_post);
+      let titleSlug = slugify(req.body.title, { lower: true, strict: true });
+      user = req.user._id;
 
-    let post = req.post;
-    post.user = user;
-    post.title = req.body.title;
-    post.slug = titleSlug;
-    post.snippet = req.body.snippet;
-    post.main_post = sanitizedPost;
+      let post = req.post;
+      post.user = user;
+      post.title = req.body.title;
+      post.slug = titleSlug;
+      post.snippet = req.body.snippet;
+      post.main_post = sanitizedPost;
 
-    try {
-      post = await post.save();
-      res.redirect(`/display/${post.slug}`);
-    } catch (error) {
-      res.render(`new/${path}`, { post: post });
+      try {
+        post = await post.save();
+        res.redirect(`/display/${post.slug}`);
+      } catch (error) {
+        res.render(`${path}`, { post: post });
+      }
     }
-  }
   );
 }
 module.exports = router;

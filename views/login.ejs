@@ -8,19 +8,13 @@
 
   <body>
     <div class="container">
-      <h1>Mr. Sajjal's Journal</h1>
+      <a href="/"><h1>Mr. Sajjal's Journal</h1></a>
       <div>
         <%- include('_navbar')%>
-        <div class="notification">
-          <%if(typeof message!='undefined'){%><%=message%><%}%>
-        </div>
+        <div class="notification"><%if(typeof message!='undefined'){%><%=message%><%}%></div>
       </div>
-      <div class="loginGrid">
-        <%- include('_login-form')%>
-      </div>
-      <div class="footer">
-        Mr. Sajjal's Journal | github: @Sajjal
-      </div>
+      <div class="loginGrid"><%- include('_login-form')%></div>
+      <div class="footer">Mr. Sajjal's Journal | github: @Sajjal</div>
     </div>
   </body>
 </html>
