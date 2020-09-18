@@ -1,4 +1,3 @@
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,6 +5,7 @@ const methodOverride = require("method-override");
 const verify = require("./modules/verifyToken");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const helmet = require("helmet");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -13,6 +13,7 @@ dotenv.config();
 const publicDirectoryPath = path.join(__dirname, "./public");
 app.use(express.static(publicDirectoryPath));
 app.set("view engine", "ejs");
+app.use(helmet());
 
 //Import routes
 const authRouter = require("./routes/authRouter");
