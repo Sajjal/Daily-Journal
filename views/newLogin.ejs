@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mr.Sajjal's Journal</title>
+    <link rel="shortcut icon" href="/images/icon.png" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <a href="/"><h1>Mr. Sajjal's Journal</h1></a>
+      <div>
+        <div class="notification"><%if(typeof message!='undefined'){%><%=message%><%}%></div>
+      </div>
+      <div class="login">
+        <form action="/user/login/" method="POST">
+          <div>
+            <input type="text" name="accessCode" id="accessCode" placeholder=" Access Code..." style="width: 80%" />
+            <input type="submit" class="btn" value="Login" style="width: 18%" />
+          </div>
+        </form>
+      </div>
+      <div class="footer">Mr. Sajjal's Journal | github: @Sajjal</div>
+    </div>
+  </body>
+</html>

@@ -3,8 +3,18 @@ const Users = require("../model/Users");
 const InvalidTokens = require("../model/Tokens");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const rateLimit = require("express-rate-limit");
+const axios = require("axios");
+
+const createAccountLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 3, // start blocking after 3 requests
+  message: { status: 429, Error: "429: Access Denied" },
+});
 
 router.post("/register", async (req, res) => {
+  //return res.render("login", { message: "New Registration is not allowed!" });
+
   //Check if user already Exists
   const userExists = await Users.findOne({ email: req.body.email });
   if (userExists) return res.status(400).render("login", { message: "Email already Exists! Try Log in!" });
@@ -28,7 +38,12 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", createAccountLimiter, async (req, res) => {
+  //New Access Token based login:
+  //const response = await axios.post(`${process.env.ACCESS_URL}`, { service: "dailyjournal", uuid: req.body.accessCode });
+  //if (!response.data.status) return res.render("newLogin", { message: "Invalid Access Code" });
+
+  //Old password based login:
   //Check if user is in DataBase
   const user = await Users.findOne({ email: req.body.email });
   if (!user) return res.status(400).render("login", { message: "Error: Invalid Email!" });
@@ -48,7 +63,10 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/logout", async (req, res) => {
-  //Saving user token to DataBase as Invalid token logout
+  //New logout:
+  //return res.cookie("accessToken", "", { maxAge: 1 }).render("newLogin", { message: "You are logged out!" });
+
+  //Old logout: Saving user token to DataBase as Invalid token logout
   const token = req.cookies.accessToken;
   if (!token) return res.redirect("/");
 
